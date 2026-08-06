@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header + utility bar clearance for anchor jumps. */
+    scroll-padding-top: 7.5rem;
+  }
+
+  body {
+    @apply bg-navy text-slate-200 antialiased;
+  }
+
+  ::selection {
+    @apply bg-repair-red text-white;
+  }
+
+  /* Respect users who ask the OS to reduce motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-repair-red ring-offset-2 ring-offset-navy;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .glass-hover {
+    @apply transition duration-300 hover:-translate-y-1 hover:border-repair-red/50 hover:bg-white/[0.07];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold tracking-wide transition duration-300 active:scale-[.97];
+  }
+
+  .btn-red {
+    @apply btn bg-red-fade text-white shadow-glow hover:brightness-110;
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/20 bg-white/5 text-white hover:border-white/50 hover:bg-white/10;
+  }
+
+  .btn-green {
+    @apply btn bg-success-green text-navy hover:brightness-110;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-repair-red/40 bg-repair-red/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-red-300;
+  }
+
+  .h-display {
+    @apply text-3xl font-black leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-5xl;
+  }
+
+  .grid-bg {
+    @apply bg-grid bg-grid;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-white/10 bg-navy/60 px-4 py-3 text-sm text-white placeholder:text-slate-500 transition focus:border-repair-red/60 focus:bg-navy;
+  }
+}
+
+/* Comparison slider handle — range input restyled as a full-height grabber. */
+.compare-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+.compare-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 100%;
+  width: 44px;
+  cursor: ew-resize;
+  background: transparent;
+}
+.compare-range::-moz-range-thumb {
+  height: 100%;
+  width: 44px;
+  border: 0;
+  cursor: ew-resize;
+  background: transparent;
+}
