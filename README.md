@@ -61,12 +61,19 @@ The build writes a fully static site to `out/` — no server runtime required.
 
 ## Deploying to GitHub Pages
 
-`.github/workflows/deploy.yml` builds and publishes on every push to `main`.
-Enable it once in the repository settings:
+Live at **https://shrishkumar111222.github.io/Mobile-Repair-Service-Center/**
 
-**Settings → Pages → Build and deployment → Source: GitHub Actions**
+`.github/workflows/deploy.yml` runs on every push to `main`: it builds the
+static export and force-pushes `out/` to the **`gh-pages`** branch, which Pages
+serves from. Nothing else to configure — `gh-pages` is a build artifact, so
+never commit to it by hand.
 
-The site then serves from `https://<user>.github.io/Mobile-Repair-Service-Center/`.
+To publish from a local machine instead:
+
+```bash
+npm run build && touch out/.nojekyll
+# then push the contents of out/ to the gh-pages branch
+```
 
 ### Custom domain or a different repo name
 
