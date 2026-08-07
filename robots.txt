@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://shrishkumar111222.github.io/Mobile-Repair-Service-Center/sitemap.xml
